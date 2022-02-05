@@ -9,39 +9,39 @@ class DialogLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 160,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(20),
       ),
-      alignment: Alignment.center,
-      margin: const EdgeInsets.symmetric(horizontal: 10),
-      padding: const EdgeInsets.symmetric(horizontal: 10),
+      margin: const EdgeInsets.symmetric(horizontal: 20),
+      padding:const EdgeInsets.all(20),
       width: double.infinity,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(
-            msg,
-            style: const TextStyle(
-              color: Colors.black,
-              fontSize: 18,
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              msg,
+              style: const TextStyle(
+                color: Colors.black,
+                fontSize: 18,
+              ),
             ),
-          ),
-          const SizedBox(height: 10),
-          Row(
-            children: [
-              button('Close', onTap: () => Navigator.pop(context)),
-              const SizedBox(width: 10),
-              button('Copy', onTap: () async {
-                await Clipboard.setData(ClipboardData(text: msg));
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Copied')),
-                );
-              })
-            ],
-          )
-        ],
+            const SizedBox(height: 20),
+            Row(
+              children: [
+                button('Close', onTap: () => Navigator.pop(context)),
+                const SizedBox(width: 10),
+                button('Copy', onTap: () async {
+                  await Clipboard.setData(ClipboardData(text: msg));
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Copied')),
+                  );
+                })
+              ],
+            )
+          ],
+        ),
       ),
     );
   }

@@ -31,7 +31,7 @@ class API {
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body);
 
-        ///check response body, convert to model
+        ///check response body, convert json to dart model
         return ResponseModel(
           status: data['status'],
           data: data['data']['link'],
@@ -50,7 +50,7 @@ class API {
     } catch (e) {
       return ResponseModel(
         status: 400,
-        data: 'Error $e',
+        data: 'Error -> $e',
         success: false,
       );
     }

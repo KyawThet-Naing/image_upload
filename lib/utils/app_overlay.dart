@@ -5,8 +5,7 @@ class AppOverlay {
     child ??= const CircularProgressIndicator();
     showDialog(
       context: context,
-
-      ///if outside of scaffold, we need to wrap material wrap
+      ///if outside of scaffold, we need to wrap material widget
       builder: (context) => Material(
         color: Colors.transparent,
         child: Container(
